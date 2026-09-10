@@ -17,4 +17,5 @@ Status: requirements and repository foundation. No application has been implemen
 
 The intended release is a portable ZIP containing an executable, dependencies, and models. Recipients should not need an installer, Python, an account, or extra downloads. GPU acceleration requires a compatible installed driver; CPU fallback is planned.
 
-No remote repository has been created or published. A source license will be selected before public release, and bundled dependency/model licenses will be reviewed separately.
+Public repository: https://github.com/RenatoBicharaVieira/Meeting-Notes-App-RV (default branch: `main`). A source license will be selected before public release, and bundled dependency/model licenses will be reviewed separately.
+

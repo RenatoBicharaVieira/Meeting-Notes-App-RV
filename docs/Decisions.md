@@ -44,3 +44,8 @@ Name app and repository Meeting-Notes-App-RV. Store source in `code/`, maintaine
 - Diarization model and access terms: https://huggingface.co/pyannote/speaker-diarization-community-1
 
 Recheck exact versions, licenses, and redistribution requirements during implementation. Prior estimates are not benchmark results.
+
+## 2026-09-10 — GitHub publication
+
+Authenticated as RenatoBicharaVieira and created the public repository https://github.com/RenatoBicharaVieira/Meeting-Notes-App-RV. The default branch is main and origin points to that repository. Local commit identity is Renato Vieira <renatovieira@puc-rio.br>. This supersedes the earlier pending remote destination. Source license selection remains pending.
+
