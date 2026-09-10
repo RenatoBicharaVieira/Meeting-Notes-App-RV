@@ -105,3 +105,7 @@ Recheck exact versions, licenses, and redistribution requirements during impleme
 
 Authenticated as RenatoBicharaVieira and created the public repository https://github.com/RenatoBicharaVieira/Meeting-Notes-App-RV. The default branch is main and origin points to that repository. Local commit identity is Renato Vieira <renatovieira@puc-rio.br>. This supersedes the earlier pending remote destination. Source license selection remains pending.
 
+
+## 2026-09-10 - Acquire known reference recordings
+
+Downloaded one complete AMI English meeting with four speaker annotations and two original CORAA PT-BR clips from different regional sources. Preserve reference text and provenance under ignored data/test_audio; publish only the testing guide. This gives us speaker-reference coverage in English and short Portuguese transcription checks without downloading the full CORAA corpus or expanding the app interface. All three audio files decode successfully; real transcription and capture evaluation remain pending. See [Test samples](TestSamples.md) for exact IDs, licenses, procedure and limits.

@@ -37,7 +37,7 @@ Current milestone: portable preview implemented in `31cc2a0`, archive verified i
 
 No additional interface features are scheduled. Use known recordings now that the first app exists.
 
-- [ ] Select small licensed reference samples: AMI for English meetings; CORAA for Brazilian Portuguese transcription. Record sample IDs, source, reference annotations, and permitted usage before acquisition. Keep audio outside Git.
+- [x] Download three licensed reference samples: one AMI English meeting and two CORAA PT-BR clips, with reference text, provenance and hashes. Fully decoded all three; see [Test samples](TestSamples.md). Audio and references remain outside Git; model accuracy evaluation is still pending.
 - [ ] Compare transcript words, speaker labels, and timestamps against reference material; report transcription errors and speaker-attribution errors separately.
 - [ ] Test playback capture plus microphone using headphones, including minimization, app mute, silent breaks, overlap, and device disconnection.
 - [ ] Check transcription quality at five-minute chunk boundaries and unmatched `speaker_unknown` passages.
@@ -62,4 +62,3 @@ No additional interface features are scheduled. Use known recordings now that th
 - 2026-09-10: Workspace inspection found an empty directory and no existing Git repository. Application tests are not applicable to the documentation-only foundation.
 
 - 2026-09-10: Created the public GitHub repository under RenatoBicharaVieira and successfully pushed the initial documentation commit to main.
-

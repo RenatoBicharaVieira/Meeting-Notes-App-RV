@@ -12,6 +12,7 @@ Status: first application preview implemented and portable folder built. The min
 - [Future ideas](docs/FutureIdeas.md)
 - [Stack setup and validation](docs/StackSetup.md)
 - [User guide](docs/UserGuide.md)
+- [Downloaded test samples and comparison procedure](docs/TestSamples.md)
 - [Implementation and validation limits](docs/Implementation.md)
 - [Third-party inventory and release work](docs/ThirdParty.md)
 
@@ -26,4 +27,3 @@ For the locally built preview, launch `dist/Meeting-Notes-App-RV/Meeting-Notes-A
 The local preview ZIP contains an executable launcher, embedded Python, dependencies, and both models: **5.91 GiB compressed**, approximately **8.38 GiB extracted** before runtime caches. It is designed to work without installation, accounts, or further model downloads. Bundled-runtime checks passed on the development PC; a clean recipient PC still needs testing. GPU acceleration requires a compatible installed driver. CPU fallback is implemented using the same large model, but CPU-only performance is not yet measured. There is one current package, not separate CPU/GPU editions.
 
 Public source repository: [RenatoBicharaVieira/Meeting-Notes-App-RV](https://github.com/RenatoBicharaVieira/Meeting-Notes-App-RV), branch `main`. Source is already public; no project license has yet been selected and no binary release has been uploaded. The next work is known-recording evaluation, real capture/lifecycle checks, long-meeting and other-PC validation, and distribution review. Optional features remain outside scope.
-
