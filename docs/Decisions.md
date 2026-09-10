@@ -109,3 +109,7 @@ Authenticated as RenatoBicharaVieira and created the public repository https://g
 ## 2026-09-10 - Acquire known reference recordings
 
 Downloaded one complete AMI English meeting with four speaker annotations and two original CORAA PT-BR clips from different regional sources. Preserve reference text and provenance under ignored data/test_audio; publish only the testing guide. This gives us speaker-reference coverage in English and short Portuguese transcription checks without downloading the full CORAA corpus or expanding the app interface. All three audio files decode successfully; real transcription and capture evaluation remain pending. See [Test samples](TestSamples.md) for exact IDs, licenses, procedure and limits.
+
+## 2026-09-10 - Supplement short Portuguese references with a full conversation
+
+The user requested a PT-BR sample of at least ten minutes and three speakers because the original clips are too short for meeting-style speaker testing. Downloaded the publisher-provided Hipsters Ponto Tech #291 episode: 52m55s with four listed participants. It stays local and is not bundled. It adds duration and multiple participants but has no verified reference transcript, so retain the original clips for text comparison and distinguish manual listening checks from scored evaluation.

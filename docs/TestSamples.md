@@ -8,7 +8,15 @@ Prepared and decoded successfully on 2026-09-10. These are test inputs, not appl
 | `ptbr_coraa_sp2010.wav` | PT-BR, 8.31s | CORAA SP2010 `test/sp/45227_sp_.wav`, São Paulo accent; fast spontaneous/read speech category. Validated text for a short transcription check. |
 | `ptbr_coraa_coral.wav` | PT-BR, 39.42s | CORAA C-ORAL-BRASIL I `test/CORAL/13711_CO_bfammn22.wav`, Minas Gerais accent; spontaneous speech with hesitations and filled pauses. Validated text for a more demanding transcription check. |
 
-Each WAV has a matching `.reference.txt`. `manifest.json` records source URLs, original archive paths, metadata, SHA-256 hashes, sizes, durations and codecs. Total audio size is approximately 41.75 MiB. All three files were fully decoded using PyAV; all are mono at 16 kHz. AMI is 16-bit PCM; the original CORAA clips are floating-point PCM. Audio has not been trimmed, concatenated or re-encoded.
+Each of the original three WAVs has a matching `.reference.txt`. `manifest.json` records source URLs, original archive paths, metadata, SHA-256 hashes, sizes, durations and codecs. Total audio size is approximately 41.75 MiB. All three files were fully decoded using PyAV; all are mono at 16 kHz. AMI is 16-bit PCM; the original CORAA clips are floating-point PCM. Audio has not been trimmed, concatenated or re-encoded.
+
+## Additional long PT-BR conversation
+
+Added on 2026-09-10 after the user requested at least ten minutes and three speakers. `data/test_audio/ptbr_hipsters_291.mp3` is the complete **Hipsters Ponto Tech #291: Processamento de Linguagem Natural** episode (2022-02-08), **52m 54.95s**, 37.48 MiB, stereo MP3 at 44.1 kHz. The [publisher page](https://www.hipsters.tech/processamento-de-linguagem-natural-hipsters-ponto-tech-291/) lists four participants: Paulo Silveira, Ana Mioto, João Granzotti and Sthefanie Monica, and provides the [audio download](https://media.blubrry.com/hipsterstech/content.blubrry.com/hipsterstech/hipsters_291_nlp.mp3).
+
+The entire file decoded successfully with PyAV; source, duration and SHA-256 are recorded in the local manifest. Participant count is supported by the publisher listing, not an independently annotated speaker timeline. No reference transcript was found on the publisher page. Use it for longer PT-BR playback/capture and manual speaker-consistency checks; do not treat app-generated text as ground truth. Podcast introductions, music and editing differ from an online meeting. This supplements rather than replaces the short reference-text clips.
+
+The publisher offers a download, but no open redistribution license was established. Keep this file local, outside Git and app distributions. The reference-text comparison step below applies to the original three samples; this fourth sample requires manual listening.
 
 ## Provenance and reproduction
 

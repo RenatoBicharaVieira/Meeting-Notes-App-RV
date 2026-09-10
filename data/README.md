@@ -19,7 +19,7 @@ Never distribute account tokens or personal meeting recordings with the portable
 | `sessions/meeting-<id>/` | Marked session folder with microphone/system WAVs, recording metadata, and transcript JSON | Deleted on normal close; abandoned marked sessions cleaned on next launch |
 | `preferences.json` | Last language selection | Retained locally; excluded from a fresh ZIP |
 | `app.lock` | Single-instance coordination | Runtime only; excluded from ZIP |
-| `test_audio/` | Three public reference WAVs, matching text, source annotations and provenance manifest | Local test assets; ignored, never bundled; retained separately from session cleanup |
+| `test_audio/` | Three reference WAVs with text, one longer PT-BR podcast MP3, source annotations and provenance manifest | Local test assets; ignored, never bundled; retained separately from session cleanup |
 
 Manual audio deletion removes the two WAV files while keeping any transcript available in the current window. Closing clears the remaining session data and in-memory speaker names. Exported `.txt` files must live outside the session tree; export rejects destinations inside it. Cleanup refuses linked/reparse-point session contents and reports failure rather than intentionally following those links.
 
