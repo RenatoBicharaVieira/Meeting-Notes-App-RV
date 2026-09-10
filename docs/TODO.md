@@ -3,6 +3,7 @@
 Last updated: 2026-09-10
 
 ## Completed
+- [x] Inspect available Python commands, NVIDIA GPU/driver, and free disk space; record limitations in `StackSetup.md`.
 - [x] Capture requirements, revised decisions, and exclusions.
 - [x] Create repository structure and development conventions.
 - [x] Exclude runtime data, models, credentials, and generated packages from version control.

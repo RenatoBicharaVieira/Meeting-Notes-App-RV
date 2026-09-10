@@ -1,5 +1,9 @@
 # Decision history
 
+## 2026-09-10 — Stack preflight
+
+Inspected the development machine before dependency installation. The RTX 4070 and adequate disk space were confirmed; Python was not discoverable in the current shell or checked standard locations. Prefer a project-local runtime and isolated environment to avoid modifying unrelated Python installations. Exact dependency versions remain unresolved. See `StackSetup.md` for evidence and limitations.
+
 ## 2026-09-10 — Product requirements and repository foundation
 
 ### Free local processing
