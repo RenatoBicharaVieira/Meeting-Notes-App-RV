@@ -1,5 +1,14 @@
 # Stack setup
 
+## Correction — existing Python installations confirmed
+
+The initial inspection ran under a restricted account with a different command path. A follow-up in the user's Windows account confirmed:
+
+- Python 3.13.14, 64-bit: `C:/Users/renat/AppData/Local/Programs/Python/Python313/python.exe`.
+- Existing `C:/Users/renat/AppData/Local/Microsoft/WindowsApps/python3.11.exe` successfully reports Python 3.11.9.
+
+Use the existing Python 3.11 installation to create the project environment, subject to environment creation and dependency validation. No new base Python download is needed. The earlier command-discovery results describe the restricted session only, not the user's installed software.
+
 ## 2026-09-10 — Initial machine inspection
 
 Read-only inspection completed before installing dependencies.
@@ -18,7 +27,7 @@ Python 3.11 x64 in an isolated project environment; PySide6; PyAudioWPatch; fast
 
 ## Next setup steps
 
-1. Obtain a project-local Python runtime and create an isolated environment without modifying system Python or global PATH.
+1. Use the confirmed existing Python 3.11 installation to create an isolated project environment without modifying system Python or global PATH.
 2. Resolve and pin compatible Windows wheels, including AI runtimes and decoding dependencies.
 3. Validate imports, UI initialization, audio device enumeration, and GPU execution before downloading large models.
 4. Acquire model artifacts into ignored local data; obtain Community-1 access without putting tokens into source or logs.

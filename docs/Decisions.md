@@ -1,5 +1,9 @@
 # Decision history
 
+## 2026-09-10 — Reuse existing Python installation
+
+After the user corrected the initial finding, inspection under the user's Windows account confirmed Python 3.13.14 (64-bit) and a working Python 3.11.9 command. Reuse existing Python 3.11 for the isolated environment rather than downloading a new runtime. The initial restricted shell had a different command path; its discovery result did not establish that Python was absent from the PC.
+
 ## 2026-09-10 — Stack preflight
 
 Inspected the development machine before dependency installation. The RTX 4070 and adequate disk space were confirmed; Python was not discoverable in the current shell or checked standard locations. Prefer a project-local runtime and isolated environment to avoid modifying unrelated Python installations. Exact dependency versions remain unresolved. See `StackSetup.md` for evidence and limitations.
