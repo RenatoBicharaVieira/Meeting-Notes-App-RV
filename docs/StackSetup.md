@@ -1,5 +1,66 @@
 # Stack setup
 
+## Current state — 2026-09-10
+
+- Created `.venv` using the existing Python 3.11.9 installation.
+- Installed pinned direct dependencies from `code/requirements.txt`; full resolved versions are in `code/requirements-win-gpu.lock.txt`.
+- PyTorch and torchaudio are both 2.11.0+cu128, installed from the official CUDA 12.8 wheel index. An unconstrained resolution selected different torch/torchaudio release numbers; pinning avoids that mismatch.
+- Installed a project-local BtbN FFmpeg 8.1 LGPL shared build under ignored `data/runtime/ffmpeg`. ZIP SHA256: `79198851def8e61310eabd259225561472bb7ea6e5a7af488bf094a61f2ee615`, checked against the GitHub asset digest. This is a developer dependency, not a completed redistribution review.
+- Downloaded `Systran/faster-whisper-large-v3`, revision `edaa852ec7e145841d8ffdb056a99866b5f0a478`, into `data/models/faster-whisper-large-v3`.
+- Community-1 download is pending local Hugging Face authentication/access. The unauthenticated attempt received HTTP 401. No complete diarization model is installed yet.
+
+### Validation performed
+
+- `pip check`: no broken requirements.
+- Imports: PySide6, PyAudioWPatch, faster-whisper, CTranslate2, pyannote.audio, torch, torchaudio, and TorchCodec.
+- GPU tensor computation passed on RTX 4070; CTranslate2 detected one CUDA device.
+- Qt widget initialization passed without displaying a window.
+- Device enumeration found 22 audio devices, including 3 loopback devices; no capture streams were opened.
+- TorchCodec decoded a generated one-second WAV correctly.
+- Whisper large-v3 loaded locally and ran GPU inference on synthetic silence with Hugging Face offline mode enabled.
+- No actual meeting/microphone recording, Portuguese/English accuracy benchmark, diarization inference, Windows 10 validation, or portable-package test has run yet.
+
+### Using the environment
+
+Run these from the repository root in PowerShell. Activation is optional; using the explicit interpreter avoids PATH and execution-policy issues.
+
+```powershell
+.venv/Scripts/python.exe -m pip check
+.venv/Scripts/python.exe code/check_stack.py
+.venv/Scripts/python.exe code/check_models.py transcription
+```
+
+To finish Community-1 setup, accept access conditions at https://huggingface.co/pyannote/speaker-diarization-community-1 and create a Read token at https://huggingface.co/settings/tokens. Enter it only in the hidden local prompt:
+
+```powershell
+.venv/Scripts/python.exe code/login_huggingface.py
+.venv/Scripts/python.exe code/download_models.py diarization
+.venv/Scripts/python.exe code/check_models.py diarization
+```
+
+The developer token is stored in ignored `data/huggingface`, not Git or command-line arguments. Never distribute that folder. `code/local_runtime.py` disables Hugging Face and pyannote telemetry and registers project-local FFmpeg/PyTorch DLL directories for the current process only. Global PATH is unchanged.
+
+### Recreating the Python dependency environment
+
+```powershell
+& "$env:LOCALAPPDATA/Microsoft/WindowsApps/python3.11.exe" -m venv .venv
+.venv/Scripts/python.exe -m pip install --upgrade pip
+.venv/Scripts/python.exe -m pip install torch==2.11.0 torchaudio==2.11.0 --index-url https://download.pytorch.org/whl/cu128
+.venv/Scripts/python.exe -m pip install -r code/requirements-win-gpu.lock.txt --extra-index-url https://download.pytorch.org/whl/cu128
+```
+
+This does not provision FFmpeg or models. FFmpeg was obtained from the BtbN provider linked by https://ffmpeg.org/download.html, asset `ffmpeg-n8.1-latest-win64-lgpl-shared-8.1.zip`. Its moving release URL may change; verify the recorded digest or explicitly review and record a newer artifact. Model downloads record upstream revisions in local manifests. Release packaging must pin all external artifacts and include the required notices and source offers before distribution.
+
+### References
+
+- https://github.com/SYSTRAN/faster-whisper
+- https://github.com/pyannote/pyannote-audio
+- https://github.com/pytorch/torchcodec (torch/torchcodec compatibility and FFmpeg shared-library requirement)
+- https://download.pytorch.org/whl/cu128
+- https://ffmpeg.org/download.html
+
+## Historical preflight notes
+
 ## Correction — existing Python installations confirmed
 
 The initial inspection ran under a restricted account with a different command path. A follow-up in the user's Windows account confirmed:
@@ -33,4 +94,4 @@ Python 3.11 x64 in an isolated project environment; PySide6; PyAudioWPatch; fast
 4. Acquire model artifacts into ignored local data; obtain Community-1 access without putting tokens into source or logs.
 5. Validate local model loading and short audio processing. Record performance and remaining compatibility gaps.
 
-No packages or models have been installed, no audio has been recorded, and no inference has been tested during this inspection.
+At the initial inspection, no packages or models had been installed and no inference had been tested. See the current-state section above for subsequent setup results.

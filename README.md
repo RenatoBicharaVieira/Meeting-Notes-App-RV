@@ -2,12 +2,13 @@
 
 A planned free, local Windows application for recording online meetings, transcribing and distinguishing speakers after recording, renaming speakers, and exporting timestamped plain text.
 
-Status: requirements and repository foundation. No application has been implemented yet.
+Status: requirements and development environment established; Whisper offline GPU inference verified. Community-1 authentication/download remains pending. No end-user application has been implemented yet.
 
 - [Project overview](docs/ProjectOverview.md)
 - [Decision history](docs/Decisions.md)
 - [Development tasks](docs/TODO.md)
 - [Future ideas](docs/FutureIdeas.md)
+- [Stack setup and validation](docs/StackSetup.md)
 
 ## Repository structure
 

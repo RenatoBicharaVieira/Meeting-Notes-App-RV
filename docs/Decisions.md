@@ -1,5 +1,11 @@
 # Decision history
 
+## 2026-09-10 — Initial dependency environment validated
+
+Created Python 3.11.9 `.venv`; pinned matching torch/torchaudio 2.11.0 CUDA 12.8 wheels rather than accepting an unconstrained mismatch. PySide6 6.11.2, PyAudioWPatch 0.2.12.8, faster-whisper 1.2.1, CTranslate2 4.8.2, pyannote.audio 4.0.7, and TorchCodec 0.16.0 passed imports. Added local FFmpeg shared libraries because TorchCodec requires them. Reuse PyTorch's CUDA DLL directory for CTranslate2, avoiding a global toolkit installation. GPU computation, synthetic decoding, and offline Whisper inference passed on the development PC. This does not establish accuracy or compatibility on other PCs.
+
+Store models and authentication caches only in ignored data. Disable telemetry in setup/runtime helpers. Community-1 remains gated until the developer completes local authentication; the user has signed into the website but local downloads are separately authenticated. See `StackSetup.md` for exact versions, verification, and remaining work.
+
 ## 2026-09-10 — Reuse existing Python installation
 
 After the user corrected the initial finding, inspection under the user's Windows account confirmed Python 3.13.14 (64-bit) and a working Python 3.11.9 command. Reuse existing Python 3.11 for the isolated environment rather than downloading a new runtime. The initial restricted shell had a different command path; its discovery result did not establish that Python was absent from the PC.

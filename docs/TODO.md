@@ -3,12 +3,15 @@
 Last updated: 2026-09-10
 
 ## Completed
+- [x] Create Python 3.11 `.venv`, install and freeze GPU dependencies, and validate imports, GPU computation, device enumeration, and synthetic WAV decoding.
+- [x] Download Whisper large-v3 and verify offline GPU inference using synthetic silence.
 - [x] Inspect available Python commands, NVIDIA GPU/driver, and free disk space; record limitations in `StackSetup.md`.
 - [x] Capture requirements, revised decisions, and exclusions.
 - [x] Create repository structure and development conventions.
 - [x] Exclude runtime data, models, credentials, and generated packages from version control.
 
 ## Next: development planning and feasibility validation
+- [ ] Finish Community-1 authenticated download and offline GPU smoke test (waiting for developer Hugging Face sign-in/access).
 - [ ] Specify application states and enabled controls, including cancellation, repeated meetings, and deletion before export.
 - [ ] Define safe normal-exit cleanup, crash/startup cleanup, and export preservation.
 - [ ] Resolve dependency versions, Python version, Windows compatibility, and offline model loading.
