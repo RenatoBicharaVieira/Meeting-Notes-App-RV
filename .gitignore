@@ -1,0 +1,16 @@
+# Local meeting data and downloaded models must never be committed.
+data/*
+!data/README.md
+!data/.gitkeep
+.env
+.env.*
+!.env.example
+*.token
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
