@@ -7,7 +7,7 @@
 - PyTorch and torchaudio are both 2.11.0+cu128, installed from the official CUDA 12.8 wheel index. An unconstrained resolution selected different torch/torchaudio release numbers; pinning avoids that mismatch.
 - Installed a project-local BtbN FFmpeg 8.1 LGPL shared build under ignored `data/runtime/ffmpeg`. ZIP SHA256: `79198851def8e61310eabd259225561472bb7ea6e5a7af488bf094a61f2ee615`, checked against the GitHub asset digest. This is a developer dependency, not a completed redistribution review.
 - Downloaded `Systran/faster-whisper-large-v3`, revision `edaa852ec7e145841d8ffdb056a99866b5f0a478`, into `data/models/faster-whisper-large-v3`.
-- Community-1 download is pending local Hugging Face authentication/access. The unauthenticated attempt received HTTP 401. No complete diarization model is installed yet.
+- Downloaded Community-1 revision `3533c8cf8e369892e6b79ff1bf80f7b0286a54ee` into `data/models/community-1` after the user accepted access conditions and authenticated locally. Earlier unauthenticated attempts received HTTP 401; access is now resolved.
 
 ### Validation performed
 
@@ -18,7 +18,8 @@
 - Device enumeration found 22 audio devices, including 3 loopback devices; no capture streams were opened.
 - TorchCodec decoded a generated one-second WAV correctly.
 - Whisper large-v3 loaded locally and ran GPU inference on synthetic silence with Hugging Face offline mode enabled.
-- No actual meeting/microphone recording, Portuguese/English accuracy benchmark, diarization inference, Windows 10 validation, or portable-package test has run yet.
+- Community-1 loaded from its local folder and completed GPU inference on ten seconds of synthetic silence with Hugging Face offline mode enabled. Non-fatal upstream warnings concerned unavailable Triton FLOP counting and TF32 being disabled for reproducibility; inference succeeded.
+- No actual meeting/microphone recording, Portuguese/English accuracy benchmark, real-speech speaker separation test, Windows 10 validation, or portable-package test has run yet. Silence smoke tests validate loading/execution, not accuracy or speaker clustering quality.
 
 ### Using the environment
 
@@ -30,7 +31,7 @@ Run these from the repository root in PowerShell. Activation is optional; using 
 .venv/Scripts/python.exe code/check_models.py transcription
 ```
 
-To finish Community-1 setup, accept access conditions at https://huggingface.co/pyannote/speaker-diarization-community-1 and create a Read token at https://huggingface.co/settings/tokens. Enter it only in the hidden local prompt:
+For future developer setup, accept access conditions at https://huggingface.co/pyannote/speaker-diarization-community-1 and create a Read token at https://huggingface.co/settings/tokens. Enter it only in the hidden local prompt (already completed on the development PC):
 
 ```powershell
 .venv/Scripts/python.exe code/login_huggingface.py

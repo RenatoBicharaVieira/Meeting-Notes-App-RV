@@ -11,7 +11,7 @@ Last updated: 2026-09-10
 - [x] Exclude runtime data, models, credentials, and generated packages from version control.
 
 ## Next: development planning and feasibility validation
-- [ ] Finish Community-1 authenticated download and offline GPU smoke test (waiting for developer Hugging Face sign-in/access).
+- [x] Finish Community-1 authenticated download and offline GPU smoke test (completed with synthetic silence; real-speech validation remains pending).
 - [ ] Specify application states and enabled controls, including cancellation, repeated meetings, and deletion before export.
 - [ ] Define safe normal-exit cleanup, crash/startup cleanup, and export preservation.
 - [ ] Resolve dependency versions, Python version, Windows compatibility, and offline model loading.

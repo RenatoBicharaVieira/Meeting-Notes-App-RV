@@ -1,5 +1,9 @@
 # Decision history
 
+## 2026-09-10 — Both local models available
+
+The user accepted Community-1 conditions and entered a Read token through the local hidden-input helper. Downloaded revision `3533c8cf8e369892e6b79ff1bf80f7b0286a54ee`; offline GPU inference on synthetic silence passed. This resolves the earlier model-access blocker. Both Whisper and Community-1 are now installed and runnable locally. No credentials or weights are committed. Real Portuguese/English speech and multi-speaker accuracy tests remain necessary before application quality claims.
+
 ## 2026-09-10 — Initial dependency environment validated
 
 Created Python 3.11.9 `.venv`; pinned matching torch/torchaudio 2.11.0 CUDA 12.8 wheels rather than accepting an unconstrained mismatch. PySide6 6.11.2, PyAudioWPatch 0.2.12.8, faster-whisper 1.2.1, CTranslate2 4.8.2, pyannote.audio 4.0.7, and TorchCodec 0.16.0 passed imports. Added local FFmpeg shared libraries because TorchCodec requires them. Reuse PyTorch's CUDA DLL directory for CTranslate2, avoiding a global toolkit installation. GPU computation, synthetic decoding, and offline Whisper inference passed on the development PC. This does not establish accuracy or compatibility on other PCs.
