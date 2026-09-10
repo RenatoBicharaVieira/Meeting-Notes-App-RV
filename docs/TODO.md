@@ -38,6 +38,7 @@ Last updated: 2026-09-10
 - [ ] Document user instructions, limitations, and validation evidence.
 
 ## Validation log
+- Portable preview: extracted folder approximately 8.38 GiB; ZIP 5.91 GiB. Bundled source parity and exclusion of account/session data checked. No public binary release uploaded; archive remains in local ignored dist/.
 - First preview: 12 focused tests passed; compile check passed; synthetic-silence worker produced an empty transcript. Bundled Python independently passed GPU and model smoke checks, audio decoding, and UI rendering. Folder size: 8.38 GiB. No actual microphone/system audio or public dataset was recorded during these checks.
 - 2026-09-10: Workspace inspection found an empty directory and no existing Git repository. Application tests are not applicable to the documentation-only foundation.
 

@@ -43,4 +43,4 @@ The development preview is for local evaluation. Source-license choice, complete
 - No private microphone/system audio or online dataset was recorded during these tests.
 - The full worker process completed on two generated silent tracks and produced an empty transcript, with no invented text.
 - The bundled embedded runtime passed imports, GPU computation, audio-device enumeration, synthetic WAV decoding, and offline Whisper/Community-1 GPU smoke tests. Its offscreen window also rendered successfully.
-- Portable folder measured 8.38 GiB before subsequent Python bytecode caches. Final ZIP measurements are recorded in TODO.md when completed.
+- Portable folder measured 8.38 GiB before subsequent Python bytecode caches; ZIP measured 5.91 GiB. `code/check_release.py` verifies packaged source parity, required runtime/model files, exclusion of account/session data, unique entries, and ZIP CRCs.
