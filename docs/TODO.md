@@ -12,8 +12,8 @@ Last updated: 2026-09-10
 
 ## Next: development planning and feasibility validation
 - [x] Finish Community-1 authenticated download and offline GPU smoke test (completed with synthetic silence; real-speech validation remains pending).
-- [ ] Specify application states and enabled controls, including cancellation, repeated meetings, and deletion before export.
-- [ ] Define safe normal-exit cleanup, crash/startup cleanup, and export preservation.
+- [x] Specify and implement application states and enabled controls, including cancellation, repeated meetings, and deletion before export.
+- [x] Implement guarded normal-exit cleanup, stale-session cleanup, and export preservation; real crash/hardware scenarios remain to be exercised.
 - [ ] Resolve dependency versions, Python version, Windows compatibility, and offline model loading.
 - [ ] Verify model and binary redistribution terms; choose source license before publishing.
 - [ ] Prototype synchronized microphone/playback capture, app microphone mute, device-loss handling, and long recordings.
@@ -21,12 +21,12 @@ Last updated: 2026-09-10
 - [ ] Choose CPU/GPU profiles and establish tested minimum hardware expectations.
 
 ## Implementation milestones
-- [ ] Recording service with incremental files, timestamps, and reliable shutdown.
-- [ ] Local transcription, diarization, and timestamp reconciliation workers.
-- [ ] Minimal dark UI, microphone control, language selection, progress, and speaker renaming.
-- [ ] UTF-8 `.txt` export, export-error handling, and manual audio deletion.
-- [ ] Exit warnings and cleanup of meeting data without touching exports or models.
-- [ ] Portable packaging including models and required notices, excluding tokens.
+- [x] Recording service implemented with incremental files and timestamps; live device/shutdown stress validation pending.
+- [x] Local transcription, diarization, and timestamp reconciliation worker implemented.
+- [x] Minimal dark UI, microphone control, language selection, progress, and speaker renaming.
+- [x] UTF-8 `.txt` export, export-error handling, and manual audio deletion.
+- [x] Exit warnings and cleanup of meeting data without touching exports or models.
+- [x] Local portable preview assembled with embedded Python, dependencies, models, and initial third-party notices; tokens excluded. Public redistribution audit remains pending.
 
 ## Release validation
 - [ ] Validate on Windows 10 and 11 x64, including a CPU-only PC.
@@ -38,6 +38,7 @@ Last updated: 2026-09-10
 - [ ] Document user instructions, limitations, and validation evidence.
 
 ## Validation log
+- First preview: 12 focused tests passed; compile check passed; synthetic-silence worker produced an empty transcript. Bundled Python independently passed GPU and model smoke checks, audio decoding, and UI rendering. Folder size: 8.38 GiB. No actual microphone/system audio or public dataset was recorded during these checks.
 - 2026-09-10: Workspace inspection found an empty directory and no existing Git repository. Application tests are not applicable to the documentation-only foundation.
 
 - 2026-09-10: Created the public GitHub repository under RenatoBicharaVieira and successfully pushed the initial documentation commit to main.

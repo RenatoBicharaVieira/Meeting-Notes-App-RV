@@ -3,7 +3,7 @@ import os
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(os.environ.get('MEETING_NOTES_ROOT', Path(__file__).resolve().parents[1]))
 _dll_handles = []
 
 

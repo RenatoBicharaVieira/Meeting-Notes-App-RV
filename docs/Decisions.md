@@ -1,5 +1,11 @@
 # Decision history
 
+## First application implementation — minimal preview
+
+Implemented the agreed one-window workflow in four small modules: UI, recorder, processing worker, and meeting-data helpers. Use a separate process for model inference so closing can stop computation before session cleanup. Use full-meeting diarization for stable remote speaker labels, while transcription reads five-minute blocks. This is simpler than adding custom cross-chunk voice matching, but long-meeting memory and chunk-boundary quality need measurement.
+
+Package a thin executable launcher with an embedded Python runtime and unmodified dependency folders instead of freezing all ML libraries into one executable. Include only explicitly selected model/runtime assets, never the developer token cache. Keep source licensing and public redistribution checks as explicit remaining release tasks. Known recordings (AMI for English meetings, CORAA for Brazilian Portuguese) remain planned evaluation material after the initial app build; no dataset downloads were performed in this milestone.
+
 ## 2026-09-10 — Both local models available
 
 The user accepted Community-1 conditions and entered a Read token through the local hidden-input helper. Downloaded revision `3533c8cf8e369892e6b79ff1bf80f7b0286a54ee`; offline GPU inference on synthetic silence passed. This resolves the earlier model-access blocker. Both Whisper and Community-1 are now installed and runnable locally. No credentials or weights are committed. Real Portuguese/English speech and multi-speaker accuracy tests remain necessary before application quality claims.

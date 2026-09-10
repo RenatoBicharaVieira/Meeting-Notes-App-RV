@@ -2,13 +2,17 @@
 
 A planned free, local Windows application for recording online meetings, transcribing and distinguishing speakers after recording, renaming speakers, and exporting timestamped plain text.
 
-Status: development environment and both models installed; Whisper and Community-1 offline GPU inference verified with synthetic silence. Real-speech accuracy and the end-user application remain to be developed and validated.
+Status: first application preview implemented and portable folder built. The minimal recording, transcription, speaker-renaming, plain-text export, and cleanup workflow is available. Twelve focused tests pass, and both models run offline in the bundled runtime. Real-meeting accuracy and other-PC validation remain pending.
 
 - [Project overview](docs/ProjectOverview.md)
 - [Decision history](docs/Decisions.md)
 - [Development tasks](docs/TODO.md)
 - [Future ideas](docs/FutureIdeas.md)
 - [Stack setup and validation](docs/StackSetup.md)
+- [User guide](docs/UserGuide.md)
+- [Implementation and validation limits](docs/Implementation.md)
+
+For the locally built preview, launch `dist/Meeting-Notes-App-RV/Meeting-Notes-App-RV.exe`. Release binaries and models are intentionally excluded from Git. The source development command is `.venv/Scripts/pythonw.exe code/app.py`.
 
 ## Repository structure
 
