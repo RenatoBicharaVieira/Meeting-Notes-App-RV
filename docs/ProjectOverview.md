@@ -6,14 +6,16 @@ Last updated: 2026-09-10
 
 Meeting-Notes-App-RV is a free, locally processed, portable Windows application that turns online meeting recordings into timestamped, speaker-labelled `.txt` transcripts. The user manually uploads exports to ChatGPT for contextual conversations, notes, decisions, and action items. ChatGPT integration is outside the application.
 
-## Supported scope
+## Target scope and current preview
+
+The first application and local portable ZIP are built. This is a development preview with synthetic verification, not a completed real-meeting evaluation. See [Implementation](Implementation.md) for details and [TODO](TODO.md) for remaining validation.
 
 - Windows 10 and 11, 64-bit.
 - Online Zoom/Teams meetings; no in-person/shared-microphone meetings.
 - Typically up to six speakers and 30-minute to four-hour meetings.
 - Brazilian Portuguese or English; language switching within a meeting is rare.
 - Development hardware: Ryzen 7800X3D, 32 GB RAM, RTX 4070.
-- Support less capable PCs through CPU fallback and evaluated model profiles. Minimum specifications and processing speeds are not yet measured.
+- CPU fallback is implemented with the same large-v3 model. Smaller profiles and minimum specifications are not yet established.
 - No paid API, live transcription, or network processing of meeting audio.
 
 ## Workflow and interface
@@ -29,11 +31,11 @@ A small English-only, dark window contains Record, Stop, Transcribe, Export, and
 7. Delete meeting audio explicitly removes recordings when requested. Do not silently delete recordings immediately after export.
 8. Normal exit removes all meeting-specific recordings, temporary files, transcript data, and speaker mappings. Preserve user-exported files, reusable models, and app preferences.
 
-Before closing with an unexported meeting, during recording, or during transcription, warn that closing permanently discards the meeting and allow cancellation. Closing during work must safely stop workers and release files before cleanup. Unexpected termination cannot guarantee immediate deletion; startup cleanup needs explicit implementation and validation.
+The preview warns before closing an unexported meeting or during recording/transcription and allows cancellation. It stops processing before cleanup. Marked stale-session cleanup is implemented for the next launch after an unexpected exit; immediate deletion during a crash cannot be guaranteed. Synthetic checks cover cancellation and cleanup helpers; real hardware/crash scenarios remain pending.
 
 ## Language behavior
 
-Prefer automatic detection only if it has no time, compute, or accuracy cost. That guarantee is unavailable, so a remembered Portuguese/English selector is the proposed initial choice.
+The implemented Portuguese/English selector remembers the last choice on normal exit. Automatic detection is excluded because the requested guarantee of no time, compute, or accuracy cost cannot be made.
 
 ## Accuracy and capture constraints
 
@@ -43,14 +45,16 @@ Write recordings incrementally to disk; do not buffer a four-hour meeting entire
 
 ## Distribution
 
-Portable folder distributed as a ZIP, containing executable, dependencies, and models. No recipient installation, account, or additional downloads. The developer accepts creating a Hugging Face account for model acquisition; tokens must not be shipped. Verify redistribution terms for exact artifacts before bundling. CPU and NVIDIA editions are proposed to avoid unnecessary GPU library downloads.
+The built local ZIP contains an executable launcher, embedded Python, dependencies, and both models. Account-free offline use is the recipient requirement; bundled-runtime checks passed on the development PC, while a clean recipient PC still needs testing. Developer Hugging Face acquisition is complete and credentials are excluded. One GPU-capable package currently also has a CPU execution path; separate CPU and NVIDIA editions remain an optional later packaging decision.
 
-Earlier package estimates (not measured): CPU ZIP 1–2.5 GB / extracted 2–4 GB; GPU large-v3 ZIP 4–7 GB / extracted 7–12 GB. Replace with measured sizes after packaging.
+Measured preview: ZIP **5.91 GiB**, extracted folder approximately **8.38 GiB** before runtime caches. These replace the early GPU package estimates. No smaller CPU package has been built. The ZIP is local under ignored `dist/`; no GitHub binary release has been published. Source-license choice and the complete redistribution review remain open.
 
-## Candidate architecture
+## Implemented architecture
 
-Python + PySide6 UI; PyAudioWPatch/WASAPI capture; faster-whisper transcription; pyannote.audio Community-1 diarization. Evaluate large-v3 on the development PC and smaller/quantized configurations on weaker machines. Run heavy models sequentially to reduce peak memory. Alignment is optional, subject to demonstrated need. All choices require compatibility and offline packaging validation.
+Python 3.11.9 + PySide6 UI; PyAudioWPatch/WASAPI capture; faster-whisper large-v3 transcription; pyannote.audio Community-1 diarization. Capture uses separate queues/writers; a separate process loads the models sequentially. Transcription reads five-minute blocks; diarization uses the whole normalized system track to group voices across the meeting. Word/turn overlap assigns speakers. Full-meeting processing peak memory and chunk-boundary accuracy are still unmeasured. WhisperX, a database, and a web server are not included.
+
+Twelve focused tests, a generated-silence worker run, bundled offline GPU checks, UI rendering, and archive integrity/source-parity checks passed. These do not establish recognition accuracy, recording reliability over four hours, or Windows 10/CPU-only support. The development PC is the only machine checked so far.
 
 ## Documentation and version control
 
-Keep code and documentation current together, with local commits made by the development agent. Record why decisions were made and what was tested. The user is comfortable with public source code; no hosting account, remote destination, or source license has yet been selected.
+Code and documentation are committed together to [RenatoBicharaVieira/Meeting-Notes-App-RV](https://github.com/RenatoBicharaVieira/Meeting-Notes-App-RV), branch `main`. Source is public; project licensing is unresolved. The repository records reasoning, changes, verification evidence, and outstanding work. Downloaded models, tokens, meeting data, environments, and built archives stay outside Git.

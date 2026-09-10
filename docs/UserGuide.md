@@ -1,6 +1,8 @@
 # Meeting-Notes-App-RV — preview
 
-Extract the complete portable ZIP into a writable folder, then double-click Meeting-Notes-App-RV.exe. Keep the runtime, code, and data/models folders next to the executable. No Python installation or Hugging Face account is needed to run the packaged app. NVIDIA acceleration requires a compatible installed driver; CPU processing is available but slower.
+Last updated: 2026-09-10. This guide describes the implemented first preview. The local ZIP is 5.91 GiB and extracts to approximately 8.38 GiB before runtime caches or recordings.
+
+Extract the complete portable ZIP into a writable folder, then double-click Meeting-Notes-App-RV.exe. Keep the complete runtime, code, and data folders next to the executable. The package includes Python and both models; there is no recipient account or model-download step. NVIDIA acceleration requires a compatible installed driver. A CPU path is implemented, but its speed and operation on CPU-only PCs have not yet been validated. The portable checks so far ran on the development PC.
 
 1. Choose English or Portuguese (Brazil), your microphone, and the system playback device used by Zoom/Teams.
 2. Press Record. Minimize the window if desired; recording continues.
@@ -12,7 +14,21 @@ Extract the complete portable ZIP into a writable folder, then double-click Meet
 
 Closing during recording/processing or before export prompts before discarding data. Starting another recording also asks before discarding the previous meeting. If processing or export fails, audio remains until you delete it or close the app. After an unexpected exit, the next launch cleans up abandoned sessions. Reusable models and language preference are retained.
 
+Speaker renaming is the only transcript editing provided. Re-running Transcribe regenerates the transcript and resets speaker-name fields. Changing names after export means you need to export again to save those changes. Manual audio deletion keeps an already generated transcript available until close, but prevents retranscription. If no transcript exists yet, audio deletion asks for confirmation.
+
+Timestamps in the exported file count from the start of recording, for example `[00:03:12] Speaker 1: ...`. The app does not infer participants' real names or generate meeting notes. Upload the exported file to ChatGPT yourself for that last step.
+
 Use headphones to prevent playback from leaking into your microphone. All sound from the selected output device is captured, including other apps. Select the correct devices before each meeting; device changes during capture are not automatically followed. Reopen the app after connecting a new device if it is not listed.
+
+## If a control is unavailable
+
+- Stop is available only while recording.
+- Transcribe requires saved audio and is disabled while another operation is active.
+- Export becomes available after speech has been transcribed. A silent recording can produce no transcript.
+- Device/language selection is locked while the current audio exists. The language choice is remembered on exit; audio-device choices start from system defaults when the app opens.
+- Processing errors keep the recording available for retry. The app does not automatically switch from a failed GPU job to CPU mode.
+
+Keep exports outside the temporary session folder; the app rejects export destinations inside it. Exported files are your responsibility to keep or edit and are not part of the app's cleanup.
 
 ## Preview limitations
 
@@ -24,3 +40,5 @@ Use headphones to prevent playback from leaking into your microphone. All sound 
 - Current large-v3 model is used on GPU or CPU. Smaller model profiles are deferred pending measurements.
 
 For now use exported transcripts as reviewable drafts. The developer checks use synthetic fixtures and do not establish meeting transcription accuracy.
+
+The repository guide is the current source of instructions. The README.txt inside an already built ZIP is a snapshot and will be refreshed during the next build.
